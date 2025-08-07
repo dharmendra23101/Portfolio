@@ -366,7 +366,7 @@ const Contact = () => {
                   <InfoContent>
                     <InfoLabel>Email</InfoLabel>
                     <InfoValue>
-                      <a href="mailto:dharmendra23101@gmail.com">dharmendra23101@gmail.com</a>
+                      <a href="mailto:dharmendra23101@gmail.com">dkbob3337@gmail.com</a>
                     </InfoValue>
                   </InfoContent>
                 </InfoItem>
@@ -378,7 +378,7 @@ const Contact = () => {
                   <InfoContent>
                     <InfoLabel>Phone</InfoLabel>
                     <InfoValue>
-                      <a href="tel:+919893xxxxxx">+91 9893 xxxxxx</a>
+                      <a href="tel:+919893xxxxxx">+91 62*****848</a>
                     </InfoValue>
                   </InfoContent>
                 </InfoItem>
@@ -495,5 +495,6 @@ const Contact = () => {
     </ContactSection>
   );
 };
+
 
 export default Contact;
