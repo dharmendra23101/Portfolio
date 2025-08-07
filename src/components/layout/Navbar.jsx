@@ -20,6 +20,22 @@ const NavbarContainer = styled.header`
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     height: 70px;
   }
+  
+  @media (max-width: 768px) {
+    height: 70px;
+    
+    &.scrolled {
+      height: 60px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    height: 60px;
+    
+    &.scrolled {
+      height: 50px;
+    }
+  }
 `;
 
 const NavbarContent = styled.div`
@@ -27,6 +43,10 @@ const NavbarContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  
+  @media (max-width: 480px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -37,11 +57,23 @@ const Logo = styled.div`
   span {
     color: var(--primary);
   }
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const NavLinks = styled.nav`
   display: flex;
   gap: 2.5rem;
+  
+  @media (max-width: 992px) {
+    gap: 1.5rem;
+  }
   
   @media (max-width: 768px) {
     display: none;
@@ -90,10 +122,15 @@ const MobileMenuToggle = styled.div`
   @media (max-width: 768px) {
     display: block;
   }
+  
+  @media (max-width: 480px) {
+    transform: scale(0.9);
+  }
 `;
+
 const MobileMenuIcon = styled.div`
-  width: 30px;
-  height: 3px;
+  width: 25px;
+  height: 2px;
   background: ${props => props.$isOpen ? 'transparent' : 'var(--text-primary)'};
   transition: all 0.3s ease;
   position: relative;
@@ -101,18 +138,26 @@ const MobileMenuIcon = styled.div`
   &::before, &::after {
     content: '';
     position: absolute;
-    width: 30px;
-    height: 3px;
+    width: 25px;
+    height: 2px;
     background: var(--text-primary);
     transition: all 0.3s ease;
   }
   
   &::before {
-    transform: ${props => props.$isOpen ? 'rotate(45deg)' : 'translateY(-8px)'};
+    transform: ${props => props.$isOpen ? 'rotate(45deg)' : 'translateY(-7px)'};
   }
   
   &::after {
-    transform: ${props => props.$isOpen ? 'rotate(-45deg)' : 'translateY(8px)'};
+    transform: ${props => props.$isOpen ? 'rotate(-45deg)' : 'translateY(7px)'};
+  }
+  
+  @media (max-width: 480px) {
+    width: 22px;
+    
+    &::before, &::after {
+      width: 22px;
+    }
   }
 `;
 
@@ -120,7 +165,7 @@ const MobileMenu = styled(motion.div)`
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 250px;
   height: 100vh;
   background: var(--bg-darker);
   z-index: 100;
@@ -139,7 +184,11 @@ const MobileNavLinks = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+  
+  @media (max-width: 480px) {
+    gap: 1.2rem;
+  }
 `;
 
 const MobileNavLink = styled.a`
@@ -152,10 +201,14 @@ const MobileNavLink = styled.a`
     color: var(--primary);
     transform: translateY(-3px);
   }
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ContactButton = styled.a`
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   padding: 0.8rem 2rem;
   background: var(--primary);
   color: white;
@@ -167,6 +220,23 @@ const ContactButton = styled.a`
     background: var(--primary-dark);
     transform: translateY(-3px);
   }
+  
+  @media (max-width: 480px) {
+    margin-top: 2rem;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const Overlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  backdrop-filter: blur(3px);
 `;
 
 const Navbar = () => {
@@ -263,37 +333,46 @@ const Navbar = () => {
           
           <AnimatePresence>
             {isMenuOpen && (
-              <MobileMenu
-                initial={{ x: 300, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 300, opacity: 0 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              >
-                <MobileNavLinks>
-                  <MobileNavLink href="#home" onClick={closeMenu}>
-                    Home
-                  </MobileNavLink>
-                  <MobileNavLink href="#about" onClick={closeMenu}>
-                    About
-                  </MobileNavLink>
-                  <MobileNavLink href="#skills" onClick={closeMenu}>
-                    Skills
-                  </MobileNavLink>
-                  <MobileNavLink href="#projects" onClick={closeMenu}>
-                    Projects
-                  </MobileNavLink>
-                  <MobileNavLink href="#education" onClick={closeMenu}>
-                    Education
-                  </MobileNavLink>
-                  <MobileNavLink href="#contact" onClick={closeMenu}>
-                    Contact
-                  </MobileNavLink>
-                  
-                  <ContactButton href="#contact" onClick={closeMenu}>
-                    Get In Touch
-                  </ContactButton>
-                </MobileNavLinks>
-              </MobileMenu>
+              <>
+                <Overlay
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={closeMenu}
+                />
+                
+                <MobileMenu
+                  initial={{ x: 300, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 300, opacity: 0 }}
+                  transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                >
+                  <MobileNavLinks>
+                    <MobileNavLink href="#home" onClick={closeMenu}>
+                      Home
+                    </MobileNavLink>
+                    <MobileNavLink href="#about" onClick={closeMenu}>
+                      About
+                    </MobileNavLink>
+                    <MobileNavLink href="#skills" onClick={closeMenu}>
+                      Skills
+                    </MobileNavLink>
+                    <MobileNavLink href="#projects" onClick={closeMenu}>
+                      Projects
+                    </MobileNavLink>
+                    <MobileNavLink href="#education" onClick={closeMenu}>
+                      Education
+                    </MobileNavLink>
+                    <MobileNavLink href="#contact" onClick={closeMenu}>
+                      Contact
+                    </MobileNavLink>
+                    
+                    <ContactButton href="#contact" onClick={closeMenu}>
+                      Get In Touch
+                    </ContactButton>
+                  </MobileNavLinks>
+                </MobileMenu>
+              </>
             )}
           </AnimatePresence>
         </NavbarContent>

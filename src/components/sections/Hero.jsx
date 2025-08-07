@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import TextAnimation from '../animations/TextAnimation';
@@ -11,6 +11,16 @@ const HeroSection = styled.section`
   align-items: center;
   position: relative;
   padding-top: var(--header-height);
+  
+  @media (max-width: 768px) {
+    padding-top: calc(var(--header-height) - 10px);
+    padding-bottom: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    min-height: auto;
+    padding-top: calc(var(--header-height) - 20px);
+  }
 `;
 
 const HeroContainer = styled.div`
@@ -22,12 +32,24 @@ const HeroContainer = styled.div`
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0 0.5rem;
   }
 `;
 
 const HeroContent = styled.div`
   @media (max-width: 992px) {
     order: 2;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0;
   }
 `;
 
@@ -55,6 +77,11 @@ const SubHeading = styled(motion.div)`
   @media (max-width: 992px) {
     justify-content: center;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const MainHeading = styled.h1`
@@ -63,6 +90,16 @@ const MainHeading = styled.h1`
   
   .highlight {
     color: var(--primary);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
@@ -97,6 +134,18 @@ const TypedText = styled.div`
       opacity: 0;
     }
   }
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    height: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    height: 1.6rem;
+  }
 `;
 
 const HeroBio = styled(motion.p)`
@@ -105,6 +154,20 @@ const HeroBio = styled(motion.p)`
   
   @media (max-width: 992px) {
     max-width: 100%;
+    margin: 0 auto 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -115,11 +178,23 @@ const HeroButtons = styled.div`
   
   @media (max-width: 992px) {
     justify-content: center;
+    margin-bottom: 2rem;
   }
   
-  @media (max-width: 400px) {
+  @media (max-width: 480px) {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+    
+    a {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+    }
   }
 `;
 
@@ -128,7 +203,15 @@ const HeroVisual = styled.div`
   
   @media (max-width: 992px) {
     order: 1;
-    margin-top: 2rem;
+    margin: 1rem auto 0;
+    max-width: 90%;
+    width: 100%;
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 0.5rem;
+    max-width: 100%;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -143,9 +226,35 @@ const CodeContainer = styled(motion.div)`
   width: 100%;
   max-width: 550px;
   position: relative;
+  overflow-x: auto;
   
   @media (max-width: 992px) {
     margin: 0 auto;
+    max-width: 500px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    max-width: 450px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.25rem 1rem;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    max-width: 100%;
+    width: 100%;
+    
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 4px;
+    }
   }
   
   &::before {
@@ -157,6 +266,10 @@ const CodeContainer = styled(motion.div)`
     height: 30px;
     background: rgba(40, 42, 54, 0.8);
     border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+    
+    @media (max-width: 480px) {
+      height: 25px;
+    }
   }
   
   &::after {
@@ -170,15 +283,32 @@ const CodeContainer = styled(motion.div)`
     align-items: center;
     font-size: 16px;
     color: var(--text-secondary);
+    
+    @media (max-width: 480px) {
+      font-size: 14px;
+      height: 25px;
+    }
   }
 `;
 
 const PreTag = styled.pre`
   margin: 0;
   padding-top: 1rem;
+  overflow-x: auto;
+  
+  @media (max-width: 480px) {
+    padding-top: 0.75rem;
+    font-size: 0.7rem;
+  }
   
   code {
     color: #f8f8f2;
+    display: inline-block;
+    min-width: 100%;
+    
+    @media (max-width: 480px) {
+      font-size: inherit;
+    }
   }
   
   .keyword {
@@ -218,13 +348,77 @@ const SocialContainer = styled(motion.div)`
   @media (max-width: 992px) {
     justify-content: center;
   }
+  
+  @media (max-width: 480px) {
+    transform: scale(0.9);
+  }
 `;
+
+// Create a more compact code version for mobile
+const MobileCode = () => (
+  <code>
+    <span className="comment">// Welcome to my portfolio</span><br />
+    <span className="keyword">const</span> <span className="variable">dev</span> <span className="operator">=</span> {'{'}<br />
+    &nbsp;<span className="property">name</span>: <span className="string">"Dharmendra"</span>,<br />
+    &nbsp;<span className="property">title</span>: <span className="string">"Full Stack Dev"</span>,<br />
+    &nbsp;<span className="property">skills</span>: [<br />
+    &nbsp;&nbsp;<span className="string">"JS"</span>, <span className="string">"React"</span>, <span className="string">"Node"</span>,<br />
+    &nbsp;&nbsp;<span className="string">"DSA"</span>, <span className="string">"CP"</span><br />
+    &nbsp;],<br />
+    &nbsp;<span className="property">education</span>: <span className="string">"B.Tech"</span>,<br />
+    &nbsp;<span className="property">location</span>: <span className="string">"Raipur"</span><br />
+    {'}'}<br />
+    <span className="keyword">function</span> <span className="function">connect</span>() {'{'}<br />
+    &nbsp;<span className="keyword">return</span> <span className="string">"Let's connect!"</span><br />
+    {'}'}<br />
+    <span className="function">connect</span>();
+  </code>
+);
+
+// Full code for desktop/tablet
+const DesktopCode = () => (
+  <code>
+    <span className="comment">// Welcome to my portfolio</span><br />
+    <span className="keyword">const</span> <span className="variable">developer</span> <span className="operator">=</span> {'{'}<br />
+    &nbsp;&nbsp;<span className="property">name</span>: <span className="string">"Dharmendra Dhruw"</span>,<br />
+    &nbsp;&nbsp;<span className="property">title</span>: <span className="string">"Full Stack Developer"</span>,<br />
+    &nbsp;&nbsp;<span className="property">skills</span>: [<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"JavaScript"</span>, <span className="string">"React"</span>, <span className="string">"Node.js"</span>,<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"DSA"</span>, <span className="string">"Competitive Programming"</span><br />
+    &nbsp;&nbsp;],<br />
+    &nbsp;&nbsp;<span className="property">education</span>: <span className="string">"B.Tech in ECE"</span>,<br />
+    &nbsp;&nbsp;<span className="property">location</span>: <span className="string">"Naya Raipur, India"</span>,<br />
+    &nbsp;&nbsp;<span className="property">passion</span>: <span className="string">"Building elegant solutions"</span><br />
+    {'}'}<br /><br />
+    <span className="keyword">function</span> <span className="function">connect</span>() {'{'}<br />
+    &nbsp;&nbsp;<span className="keyword">return</span> <span className="string">"Let's create something amazing!"</span><br />
+    {'}'}<br /><br />
+    <span className="function">connect</span>();
+  </code>
+);
 
 const Hero = () => {
   const typedTextRef = useRef(null);
   const typedTextValueRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   
   const typedTexts = ['Full Stack Developer', 'Web Developer', 'Problem Solver', 'Competitive Programmer'];
+  
+  useEffect(() => {
+    // Check if mobile device based on screen width
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
   
   useEffect(() => {
     let currentTextIndex = 0;
@@ -344,24 +538,7 @@ const Hero = () => {
               transition={{ duration: 0.7 }}
             >
               <PreTag>
-                <code>
-                  <span className="comment">// Welcome to my portfolio</span><br />
-                  <span className="keyword">const</span> <span className="variable">developer</span> <span className="operator">=</span> {'{'}<br />
-                  &nbsp;&nbsp;<span className="property">name</span>: <span className="string">"Dharmendra Dhruw"</span>,<br />
-                  &nbsp;&nbsp;<span className="property">title</span>: <span className="string">"Full Stack Developer"</span>,<br />
-                  &nbsp;&nbsp;<span className="property">skills</span>: [<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"JavaScript"</span>, <span className="string">"React"</span>, <span className="string">"Node.js"</span>,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="string">"DSA"</span>, <span className="string">"Competitive Programming"</span><br />
-                  &nbsp;&nbsp;],<br />
-                  &nbsp;&nbsp;<span className="property">education</span>: <span className="string">"B.Tech in ECE"</span>,<br />
-                  &nbsp;&nbsp;<span className="property">location</span>: <span className="string">"Naya Raipur, India"</span>,<br />
-                  &nbsp;&nbsp;<span className="property">passion</span>: <span className="string">"Building elegant solutions"</span><br />
-                  {'}'}<br /><br />
-                  <span className="keyword">function</span> <span className="function">connect</span>() {'{'}<br />
-                  &nbsp;&nbsp;<span className="keyword">return</span> <span className="string">"Let's create something amazing!"</span><br />
-                  {'}'}<br /><br />
-                  <span className="function">connect</span>();
-                </code>
+                {isMobile ? <MobileCode /> : <DesktopCode />}
               </PreTag>
             </CodeContainer>
           </HeroVisual>
