@@ -9,6 +9,15 @@ const projects = [
         demo: "https://agrolens-gamma.vercel.app/"
     },
     {
+        title: "AI Summarizer 1.0 (Crome Extention)",
+        category: "software",
+        description: "Built a Chrome extension using Gemini AI that generates summaries in 14+ languages with adjustable length and styles, includes an area selection tool for focused summarization, and features a responsive UI with themes, persistent settings, and multiple export options—tested on 50+ articles.",
+        image: "assets/images/icon128.png", 
+        technologies: ["Chrome Extension", "Google Gemini AI API", "JavaScript", "CSS", "HTML"],
+        github: "https://github.com/dharmendra23101/AI-Summarizer-1.0",
+        demo: "https://github.com/dharmendra23101/AI-Summarizer-1.0"
+    },
+    {
         title: "EasyRide",
         category: "software",
         description: "Developed a real-time vehicle booking and rental website to simplify the process of finding and renting vehicles with intuitive UI and secure payment integration.",
@@ -82,5 +91,6 @@ const projects = [
         demo: null
     }
 ];
+
 
 export { projects };
