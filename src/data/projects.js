@@ -4,7 +4,7 @@ const projects = [
         category: "software",
         description: "A comprehensive agricultural technology platform that helps farmers make data-driven decisions. Combines modern agricultural science with AI and user-friendly technology to optimize farming operations.",
         image: "assets/images/Agrolens.png", 
-        technologies: ["React", "Next.js", "Node.js", "JavaScript", "Vercel", "AI/ML", "Responsive Design", "Firebase", "chatbot"],
+        technologies: ["React", "Next.js", "Node.js", "JavaScript", "Vercel", "AI/ML", "Responsive Design", "Firebase", "chatbot", "API", "Scrapping"],
         github: "https://github.com/dharmendra23101/Agrolens",
         demo: "https://agrolens-gamma.vercel.app/"
     },
@@ -94,3 +94,4 @@ const projects = [
 
 
 export { projects };
+
