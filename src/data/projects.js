@@ -18,6 +18,15 @@ const projects = [
         demo: "https://github.com/dharmendra23101/AI-Summarizer-1.0"
     },
     {
+    "title": "React Component Library",
+    "category": "software",
+    "description": "A modern UI component library built with React, TypeScript, and Framer Motion featuring advanced components with animations.",
+    "image": "assets/images/react-component.png",
+    "technologies": ["React", "TypeScript", "Framer Motion", "TailwindCSS", "Jest"],
+    "github": "https://github.com/dharmendra23101/React-Component",
+    "demo": "https://react-component-ecru.vercel.app/"
+},
+    {
         title: "EasyRide",
         category: "software",
         description: "Developed a real-time vehicle booking and rental website to simplify the process of finding and renting vehicles with intuitive UI and secure payment integration.",
@@ -94,4 +103,5 @@ const projects = [
 
 
 export { projects };
+
 
