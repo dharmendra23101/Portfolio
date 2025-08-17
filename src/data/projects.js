@@ -21,7 +21,7 @@ const projects = [
     "title": "React Component Library",
     "category": "software",
     "description": "A modern UI component library built with React, TypeScript, and Framer Motion featuring advanced components with animations.",
-    "image": "assets/images/react-component.png",
+    "image": "assets/images/react-component.jpg",
     "technologies": ["React", "TypeScript", "Framer Motion", "TailwindCSS", "Jest"],
     "github": "https://github.com/dharmendra23101/React-Component",
     "demo": "https://react-component-ecru.vercel.app/"
@@ -103,5 +103,6 @@ const projects = [
 
 
 export { projects };
+
 
 
