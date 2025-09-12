@@ -1,5 +1,14 @@
 const projects = [
     {
+    title: "EasyTrip",
+    category: "software",
+    description: "A modern travel discovery platform with interactive maps, image galleries, and personalized destination recommendations. Provides secure authentication, role-based access, and an admin dashboard for easy management.",
+    image: "assets/images/EasyTrip.png",
+    technologies: ["Next.js", "Node.js", "Express.js", "Firebase", "PostgreSQL", "Supabase", "Cloudinary", "Vercel", "Render", "Responsive Design"],
+    github: "https://github.com/dharmendra23101/EasyTrip",
+    demo: "https://easytrip-psi.vercel.app/"
+},
+    {
         title: "Agrolens",
         category: "software",
         description: "A comprehensive agricultural technology platform that helps farmers make data-driven decisions. Combines modern agricultural science with AI and user-friendly technology to optimize farming operations.",
@@ -103,6 +112,7 @@ const projects = [
 
 
 export { projects };
+
 
 
 
